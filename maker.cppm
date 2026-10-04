@@ -40,7 +40,7 @@ const std::vector<std::vector<double>>& matrix2) {
 		(row1, std::vector<double>(row2,0.0));
 	for (size_t i = 0; i < row1; i++) {
 		for (size_t j = 0; j < row2; j++) {
-			for (size_t t = 0; t < row2; t++) {
+			for (size_t t = 0; t < colow; t++) {
 				result[i][j] += matrix1[i][t] * matrix2[t][j];
 			}
 		}

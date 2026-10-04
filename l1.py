@@ -9,13 +9,13 @@ def verify(a_path, b_path, c_path, tol=1e-6):
     B = load(b_path)
     C = load(c_path)
     C_ref = A @ B
-    diff = np.abs(C - C_ref).max()
+    diff = np.abs(C - C_ref).max() / np.abs(C_ref).max()
     status = "OK" if diff < tol else "FAIL"
     print(f"{c_path}: N={A.shape[0]}, max diff = {diff:.3e} {status}")
     return diff < tol
 
 if __name__ == "__main__":
-    sizes = [4, 5]
+    sizes = [5, 50, 100, 300, 500]
     ok = True
     for n in sizes:
         ok &= verify(f'input/A_{n}.txt', f'input/B_{n}.txt', f'output/C_{n}.txt')
